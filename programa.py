@@ -57,7 +57,8 @@ while True:
         input("\nAperte Enter para voltar ao menu")
     elif opcao == 3:
         sleep(1)
-        print(f"\nExtrato do mês:{extrato}")
+        print(f"\nExtrato:")
+        print("Não foram realizadas operações" if not extrato else extrato)
         print(f"\n                   SALDO: R$ {saldo:.2f}")
         sleep(1)
         input("\nAperte Enter para voltar ao menu")
