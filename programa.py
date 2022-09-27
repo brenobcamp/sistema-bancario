@@ -1,5 +1,6 @@
 from time import sleep
 from datetime import datetime
+
 def menu_inicial():
     print(f'''
 ======= Banco Batista Campos =======
