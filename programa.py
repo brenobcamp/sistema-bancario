@@ -13,7 +13,6 @@ class Cliente():
         transacao.registrar(conta)
     def adicionar_conta(self, conta):
         self._contas.append(conta)
-
 class PessoaFisica(Cliente):
     def __init__(self, endereco, cpf, nome, data_nascimento):
         super().__init__(endereco)
@@ -129,7 +128,6 @@ class ContaCorrente(Conta):
                 Conta: {self.numero}
                 Titular: {self.cliente.nome}
                 """
-
 class Historico:
     def __init__(self):
         self._transacoes = []
@@ -154,7 +152,6 @@ class Transacao(ABC):
     @abstractmethod
     def registrar(self, conta):
         pass
-
 class Deposito(Transacao):
     def __init__(self, valor):
         self._valor = valor
@@ -168,7 +165,6 @@ class Deposito(Transacao):
 
         if sucesso_transacao:
             conta.historico.adicionar_transacao(self)
-
 class Saque(Transacao):
     def __init__(self, valor):
         self._valor = valor
@@ -219,10 +215,6 @@ def main():
         else:
             print("\nDigite uma opção válida")
             sleep(1)
-
-
-
-
 def saque(clientes):
     cpf = input("\nInforme o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -236,7 +228,6 @@ def saque(clientes):
     if not conta:
         return
     cliente.realizar_transacao(conta, transacao)
-
 def deposito(clientes):
     cpf = input("\nInforme o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -276,7 +267,6 @@ def exibir_extrato(clientes):
     print(extrato)
     print(f"\nSaldo: \n\tR$ {conta.saldo:.2f}")
     input("\nAperte Enter para voltar ao menu")
-
 def criar_cliente(clientes):
     cpf = input("\nInforme o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -297,7 +287,7 @@ def criar_cliente(clientes):
     print(" Usuário criado com sucesso!")
     input("Aperte Enter para voltar ao menu")
 def filtrar_cliente(cpf, clientes):
-    clientes_filtrados = [cliente for cliente in clientes if cliente._cpf == cpf]
+    clientes_filtrados = [cliente for cliente in clientes if cliente.cpf == cpf]
     return  clientes_filtrados[0] if clientes_filtrados else None
 def criar_conta(numero_conta, clientes, contas):
     cpf = input("\nInforme o CPF do cliente: ")
@@ -310,7 +300,6 @@ def criar_conta(numero_conta, clientes, contas):
     cliente.contas.append(conta)
     print("\nConta criada com sucesso!")
     input("Aperte Enter para voltar ao menu")
-
 def listar_contas(contas):
     for conta in contas:
         print("="*100)
